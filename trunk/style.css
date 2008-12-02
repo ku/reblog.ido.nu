@@ -1,0 +1,52 @@
+
+		* {
+			font-family: sans-serif;
+		}
+		.photo {
+			/*display: block;*/
+			border: 0px none;
+		}
+		div {
+			  list-style:none;
+			  padding-top: 2px;
+			  padding-bottom: 2px;
+		}
+
+		cite {
+			margin-left: 8px;
+			padding-left: 8px;
+		}
+
+		div span.left {
+			padding-right: 12px;
+		}
+		div span.right {
+			position: absolute;
+			right: 15px;
+			xfloat: right;
+		}
+
+
+		span.ownerid {
+			font-size: large;
+		}
+
+		img.photo, .post_container img {
+			border: 0px none;
+			margin-right: 5px;
+		}
+
+
+div.post_container img {
+	float:left;
+	position:relative;
+}
+
+.clear {
+	clear: both;
+}
+
+.bold {
+	font-weight: bold;
+}
+

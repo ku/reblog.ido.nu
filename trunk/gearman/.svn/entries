@@ -1,0 +1,75 @@
+8
+
+dir
+196
+svn://ido.nu/kuma/reblog.ido.nu/trunk/gearman
+svn://ido.nu
+
+
+
+2008-05-28T02:13:46.279868Z
+144
+kuma
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+99526061-5154-dc11-8f57-000e0cc28d1e
+
+Magic
+dir
+
+log
+dir
+
+reblogserver
+file
+
+
+
+
+2008-12-02T14:36:25.000000Z
+d64f2303a18d7385a7682383f93cc85c
+2008-05-28T02:13:46.279868Z
+144
+kuma
+has-props
+
+tests
+dir
+
+run_gearmand
+file
+
+
+
+
+2008-12-02T14:36:25.000000Z
+fed79414233c3688984af67629ace18c
+2008-04-12T04:45:43.946894Z
+133
+kuma
+has-props
+
+reblogserver.pl
+file
+
+
+
+
+2008-12-02T14:36:25.000000Z
+854184b58aa2ee40f67ebeacc2f203bb
+2008-01-21T10:08:17.199725Z
+94
+kuma
+

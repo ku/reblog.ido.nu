@@ -1,0 +1,4 @@
+#!/bin/sh
+printf "127.:allow,RELAYCLIENT=\"\"\n:allow\n" | tcprules gearmand.cdb rules.tmp
+#sudo gearmand --daemon --pidfile=/var/log/gearmand.pid --debug=1
+

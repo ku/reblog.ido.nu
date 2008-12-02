@@ -1,0 +1,1109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+    	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    	<meta name="viewport" content="width = 620"/>
+    	
+    	<title>Tumblr</title>
+    	
+    	<link rel="icon" href="http://assets.tumblr.com/images/favicon.gif" type="image/gif"/>
+    	
+    	    	<script type="text/javascript" language="javascript" src="http://assets.tumblr.com/javascript/prototype.js"></script>
+<script type="text/javascript" language="javascript" src="http://assets.tumblr.com/javascript/effects.js"></script>
+<script type="text/javascript" language="javascript" src="http://assets.tumblr.com/javascript/application.js?17"></script>
+<script type="text/javascript" language="javascript" src="http://assets.tumblr.com/javascript/tumblelog.js"></script>
+    	
+    	<link rel="stylesheet" type="text/css" href="http://assets.tumblr.com/stylesheets/global.css?17"/>
+    	
+    	    	
+    	    	
+    	    </head>
+    <body id="dashboard_index" onclick="close_menus();"
+    >
+        <div id="container">            
+            <div id="header">
+                <a href="/dashboard"><img
+                src="http://assets.tumblr.com/images/logo.png?4" id="logo" alt="Tumblr"/></a>
+                
+                                    <ul id="primary_nav">
+                                                    <li class="nav" id="nav_account_menu" style="z-index:7;">
+                                                
+                            <a href="#" onclick="return open_menu('account_menu');">Account <img
+                            src="http://assets.tumblr.com/images/nav_down_arrow.png" class="down_arrow" alt=""/></a>
+                            
+                            <img src="http://assets.tumblr.com/images/primary_nav_bubble_arrow.png" class="arrow" alt=""/>
+                            
+                            <div id="account_menu" class="menu" style="display:none;" 
+                            onclick="just_clicked_menu = true;">
+                                <ul class="menu_items">
+                                    <li onclick="location.href='/extras';"><a
+                                    href="/extras">Extras</a></li>
+                                    
+                                                                            <li onclick="location.href='/theme';"><a
+                                        href="/theme">Theme</a></li>
+                                                                        
+                                    <li onclick="location.href='/settings';"><a
+                                    href="/settings">Settings</a></li>
+                                    <li onclick="location.href='/feeds';"><a
+                                    href="/feeds">Feeds</a></li>
+                                    <li onclick="location.href='/help';"><a
+                                    href="/help">Help</a></li>
+                                    <li onclick="location.href='/logout';"><a 
+                                    href="/logout">Log out</a></li>
+                                    <li onclick="location.href='http://ku.tumblr.com/';"
+                                    class="last"><a href="http://ku.tumblr.com/">
+                                                                                    My tumblelog
+                                                                                &amp;#8594;
+                                    </a></li>
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                        
+                                                    <li class="nav" id="nav_channels_menu" style="z-index:6;">
+                                                
+                            <a href="#" onclick="return open_menu('channels_menu');">Channels <img
+                            src="http://assets.tumblr.com/images/nav_down_arrow.png"
+                            class="down_arrow" alt=""/></a>
+
+                            <img src="http://assets.tumblr.com/images/primary_nav_bubble_arrow.png"
+                            class="arrow" alt=""/>
+                            
+                            <div id="channels_menu" class="menu" style="display:none;"
+                            onclick="just_clicked_menu = true;">
+                                <ul class="menu_items">
+                                                                    
+                                    <li onclick="location.href='/create/channel';"
+                                    class="last"><a href="/create/channel">+ Create a channel</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav active" style="z-index:5;">
+                            <a href="/dashboard">Dashboard</a>
+                            <img src="http://assets.tumblr.com/images/primary_nav_bubble_arrow.png" class="arrow" alt=""/>
+                        </li>                        
+                    </ul>
+                            </div>
+            
+            <noscript>
+                <div class="javascript_notice">
+                    Some functionality may not be available unless you <a target="_blank"
+                    href="https://www.google.com/adsense/support/bin/answer.py?hl=en&amp;answer=12654">enable JavaScript</a>.
+                </div>
+            </noscript>
+            
+            <div id="content_container">
+                <div style="background:url('http://assets.tumblr.com/images/content_top.png') no-repeat top center;">
+                    <div style="background:url('http://assets.tumblr.com/images/content_bottom.png') no-repeat bottom center;">
+                        <div id="content">
+                            <!-- Title -->
+<h1>
+            <a href="/dashboard">Dashboard</a>
+        
+    </h1>
+
+<!-- People Button -->
+<div id="people_button">    
+    <div>
+                    <a href="/following" title="Following">
+                162                        <img src="http://assets.tumblr.com/images/dude.png?v=2" class="person"
+                alt="Following"/>
+            </a>
+    </div>
+    
+    <img src="http://assets.tumblr.com/images/round_corner_top_left.png" class="top_left_corner"/>
+    <img src="http://assets.tumblr.com/images/round_corner_top_right.png" class="top_right_corner"/>
+    <img src="http://assets.tumblr.com/images/round_corner_bottom_left.png" class="bottom_left_corner"/>
+    <img src="http://assets.tumblr.com/images/round_corner_bottom_right.png" class="bottom_right_corner"/>
+    
+    <!-- Preload Filter button images -->
+    <script type="text/javascript">
+        var filter_image    = new Image()
+        filter_image.src    = '/images/filter.png';
+        var filter_image_on = new Image();
+        filter_image_on.src = '/images/filter_on.png';
+    </script>
+    
+    <!-- Filter Button -->
+    <img src="/images/filter.png"
+    id="filter_button" title="Filter"
+    alt="Filter"
+    onclick="click_filter_button(false);"/>    
+</div>
+
+<!-- Invite / Members -->
+
+
+<!-- Invite confirmation -->
+
+<form id="filter_pane" style="display:none;" onsubmit="return submit_filter();">
+    Show
+    <select name="show" id="filter_type">
+        <option value="everything">everything</option>
+        <option value="text" >text</option>
+        <option value="photos" >photos</option>
+        <option value="quotes" >quotes</option>
+        <option value="links" >links</option>
+        <option value="chats" >chats</option>
+        <option value="audio" >audio</option>
+        <option value="videos" >videos</option>
+    </select>
+            by
+        <select name="by" id="filter_author">
+            <option value="everyone">everyone</option>
+            <option value="me" >me</option>        
+        </select>
+        <input type="image" class="submit" alt="Filter" title="Filter"
+    src="http://assets.tumblr.com/images/filter_pane_arrow.png"/>
+</form>
+
+
+
+<!-- Posts -->
+<ol id="posts" >
+    
+
+    
+            
+        <li class="post is_mine with_avatar">
+            <div style="padding:1px;">
+                <div class="post_container">
+                    <div class="username" style="display:block;">
+                        Post to 
+
+                                                    <a href="http://ku.tumblr.com/"
+                            style="text-decoration:underline;">ku.tumblr.com</a>:
+                                            </div>
+
+                    <div style="padding:0px 0px 0px 0px; margin-left:0px;"><img alt="Create a post"
+                    src="http://assets.tumblr.com/images/add_post_icons.png?2" usemap="#add_post"
+                    style="width:457px; height:76px; border-width:0px;"/></div>
+
+                    <map id="add_post" name="add_post">
+                        <area shape="rect" coords="0,0,75,78"   title="Post Text" alt="Text"
+                        href="/new/text"/>
+                        <area shape="rect" coords="75,0,139,78"  title="Post a Photo" alt="Photo"
+                        href="/new/photo"/>
+                        <area shape="rect" coords ="139,0,203,78" title="Post a Quote" alt="Quote"
+                        href="/new/quote"/>
+                        <area shape="rect" coords ="203,0,267,78" title="Post a Link" alt="Link"
+                        href="/new/link"/>
+                        <area shape="rect" coords ="267,0,331,78" title="Post a Chat" alt="Chat"
+                        href="/new/chat"/>
+                        <area shape="rect" coords ="331,0,395,78" title="Post Audio" alt="Audio"
+                        href="/new/audio"/>
+                        <area shape="rect" coords ="395,0,459,78" title="Post a Video" alt="Video"
+                        href="/new/video"/>
+                    </map>
+                </div>
+            </div>
+
+            <div class="so_ie_doesnt_treat_this_as_inline">
+                <div class="arrow"><img src="http://assets.tumblr.com/images/arrow_mask.png" alt=""/></div>
+
+                <div style="background:url('http://data.tumblr.com/avatar_bce44ea4291e_40.gif') no-repeat;"
+                class="avatar"><a href="http://ku.tumblr.com"><img
+                src="http://assets.tumblr.com/images/avatar_border_40px.png"/></a></div>
+
+                <img src="http://assets.tumblr.com/images/round_corner_top_left.png" class="top_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_top_right.png" class="top_right_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_left.png" class="bottom_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_right.png" class="bottom_right_corner"/>
+            </div>            
+        </li>
+    
+        
+    
+                
+        <li class="
+            post
+            video                                    not_mine        "
+                    onmouseover="Element.show('permalink_24071255');"
+            onmouseout="Element.hide('permalink_24071255');"
+                >
+            
+                        
+                                    
+            <div style="padding:1px;">
+                <div class="post_container">                        
+                    
+                    <div class="username">
+                        <a href="http://torasshu.tumblr.com">torasshu</a>:
+                    </div>
+
+                                        <div id="watch_link_24071255">
+                                                    <a href="#" onclick="Element.hide('watch_link_24071255');
+                            Element.show('watch_video_24071255'); return false;"><img
+                            src="http://assets.tumblr.com/images/video_icon.png" style="width:22px; height:13px;
+                            vertical-align:-2px; margin-right:4px;" alt="video"/></a>
+                            <a href="#" onclick="Element.hide('watch_link_24071255');
+                            Element.show('watch_video_24071255'); return false;"
+                            target="_blank" style="font-weight:bold;">Watch</a>
+                                            </div>
+                
+                    <div id="watch_video_24071255"
+                    style="display:none; overflow:hidden; width:410px;">
+                        <div style="font-size:10px; margin-bottom:10px;">
+                            <a href="#" onclick="Element.hide('watch_video_24071255'); Element.show('watch_link_24071255'); return false;">Hide video</a>
+                        </div>
+                    
+                        <object width="400" height="336"><param name="movie" value="http://www.youtube.com/watch?v=c-EqQjhkDxQ"></param><embed src="http://www.youtube.com/v/c-EqQjhkDxQ" type="application/x-shockwave-flash" width="400" height="336"></embed></object>                    </div>
+                
+                                            <div style="margin-top:10px;" class="post_body">
+                            Don’t Laugh at my romance (via <a href="http://www.youtube.com/profile?user=tarukan1908">tarukan1908</a>)                        </div>
+                                        
+                    <div class="clear"></div>
+                    
+                            
+                                        
+                    <div id="notes_outer_container_24071255" style="display:none; overflow:hidden;">
+                        <div style="padding-top:10px;">
+                            <div id="notes_container_24071255" style="display:none; overflow:hidden;"></div>
+            
+                            <div id="notes_control_24071255" class="notes_control">
+                                <div id="notes_loader_24071255" class="notes_loader">
+                                    Loading...
+                                </div>
+                
+                                <div id="notes_hide_link_24071255" style="display:none;" class="notes_hide_link">
+                                    <a href="#" onclick="Effect.SlideUp('notes_outer_container_24071255');
+                                    $('show_notes_link_24071255').style.textDecoration = 'underline';
+                                    return false;" style="color:#79A0BE;">Hide notes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so_ie_doesnt_treat_this_as_inline">
+                <div style="background:url('http://data.tumblr.com/avatar_4efb8056d780_40.gif') no-repeat;"
+                class="avatar"><a href="http://torasshu.tumblr.com"><img
+                src="http://assets.tumblr.com/images/avatar_border_40px.png"/></a></div>
+
+                <div class="arrow"><img src="http://assets.tumblr.com/images/arrow_mask.png" alt=""/></div>
+            
+                                    <a href="http://torasshu.tumblr.com/post/24071255" title="Permalink"><img
+                    src="http://assets.tumblr.com/images/permalink.png"
+                    id="permalink_24071255" style="position:absolute; right:1px; top:1px;
+                    width:7px; height:7px; display:none; padding:3px;" alt="permalink"/></a>
+                        
+                                    <div class="control">
+                        <div id="post_24071255_controls">                
+                                                                                                <a href="/reblog/24071255?redirect_to=%2Fdashboard%2F"
+                                    class="reblog_link" title="ReBlog"><img alt="ReBlog"
+                                    src="http://assets.tumblr.com/images/reblog_icon.png"/></a>
+                                                                                    </div>
+                    </div>
+                                
+                <img src="http://assets.tumblr.com/images/round_corner_top_left.png"
+                class="top_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_top_right.png"
+                class="top_right_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_left.png" 
+                class="bottom_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_right.png" 
+                class="bottom_right_corner"/>
+            </div>                
+        </li>
+                
+        <li class="
+            post
+            regular            same_user_as_last                        not_mine        "
+                    onmouseover="Element.show('permalink_24071036');"
+            onmouseout="Element.hide('permalink_24071036');"
+                >
+            
+                        
+                                    
+            <div style="padding:1px;">
+                <div class="post_container">                        
+                    
+                    <div class="username">
+                        <a href="http://torasshu.tumblr.com">torasshu</a>:
+                    </div>
+
+                                                        
+                        <p>twitterでfavったら自分のtimelineに流れてくるようなRepost機能がある面白いなあと思いました。 </p>
+<p><a>about:blank</a></p>                                
+                                        
+                    <div id="notes_outer_container_24071036" style="display:none; overflow:hidden;">
+                        <div style="padding-top:10px;">
+                            <div id="notes_container_24071036" style="display:none; overflow:hidden;"></div>
+            
+                            <div id="notes_control_24071036" class="notes_control">
+                                <div id="notes_loader_24071036" class="notes_loader">
+                                    Loading...
+                                </div>
+                
+                                <div id="notes_hide_link_24071036" style="display:none;" class="notes_hide_link">
+                                    <a href="#" onclick="Effect.SlideUp('notes_outer_container_24071036');
+                                    $('show_notes_link_24071036').style.textDecoration = 'underline';
+                                    return false;" style="color:#79A0BE;">Hide notes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so_ie_doesnt_treat_this_as_inline">
+                <div style="background:url('http://data.tumblr.com/avatar_4efb8056d780_40.gif') no-repeat;"
+                class="avatar"><a href="http://torasshu.tumblr.com"><img
+                src="http://assets.tumblr.com/images/avatar_border_40px.png"/></a></div>
+
+                <div class="arrow"><img src="http://assets.tumblr.com/images/arrow_mask.png" alt=""/></div>
+            
+                                    <a href="http://torasshu.tumblr.com/post/24071036" title="Permalink"><img
+                    src="http://assets.tumblr.com/images/permalink.png"
+                    id="permalink_24071036" style="position:absolute; right:1px; top:1px;
+                    width:7px; height:7px; display:none; padding:3px;" alt="permalink"/></a>
+                        
+                                    <div class="control">
+                        <div id="post_24071036_controls">                
+                                                                                                <a href="/reblog/24071036?redirect_to=%2Fdashboard%2F"
+                                    class="reblog_link" title="ReBlog"><img alt="ReBlog"
+                                    src="http://assets.tumblr.com/images/reblog_icon.png"/></a>
+                                                                                    </div>
+                    </div>
+                                
+                <img src="http://assets.tumblr.com/images/round_corner_top_left.png"
+                class="top_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_top_right.png"
+                class="top_right_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_left.png" 
+                class="bottom_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_right.png" 
+                class="bottom_right_corner"/>
+            </div>                
+        </li>
+                
+        <li class="
+            post
+            photo                                    not_mine        "
+                    onmouseover="Element.show('permalink_24070822');"
+            onmouseout="Element.hide('permalink_24070822');"
+                >
+            
+                        
+                                    
+            <div style="padding:1px;">
+                <div class="post_container">                        
+                    
+                    <div class="username">
+                        <a href="http://xtc.tumblr.com">xtc</a>:
+                    </div>
+
+                                                                                                <a href="http://xtc.tumblr.com/post/24070822" onclick="this.style.display='none';
+                            $('big_photo_24070822').style.display=''; return false;"
+                            id="small_photo_24070822"><img class="image" alt="" style="float:left;"
+                            src="http://data.tumblr.com/0ZEBnoQrc4cc0d7aieLLOnt8_100.jpg"/></a>
+        
+                            <div id="big_photo_24070822" style="display:none;">
+                                <a href="#" 
+                                onclick="
+                                    $('small_photo_24070822').style.display='';
+                                    $('big_photo_24070822').style.display='none';
+                                    return false;
+                                "><img class="image" alt=""
+                                style="
+                                                                        margin-bottom:10px;                                "
+                                src="http://data.tumblr.com/0ZEBnoQrc4cc0d7aieLLOnt8_400.jpg"/></a>
+                            </div>
+                                                
+                        
+                        via <a href="http://www.thecobrasnake.com/partyphotos/blackrabbits/images/IMG_4430.jpg"></a><a href="http://www.thecobrasnake.com">www.thecobrasnake.com</a>                    
+                        <div class="clear"></div>
+                                
+                                        
+                    <div id="notes_outer_container_24070822" style="display:none; overflow:hidden;">
+                        <div style="padding-top:10px;">
+                            <div id="notes_container_24070822" style="display:none; overflow:hidden;"></div>
+            
+                            <div id="notes_control_24070822" class="notes_control">
+                                <div id="notes_loader_24070822" class="notes_loader">
+                                    Loading...
+                                </div>
+                
+                                <div id="notes_hide_link_24070822" style="display:none;" class="notes_hide_link">
+                                    <a href="#" onclick="Effect.SlideUp('notes_outer_container_24070822');
+                                    $('show_notes_link_24070822').style.textDecoration = 'underline';
+                                    return false;" style="color:#79A0BE;">Hide notes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so_ie_doesnt_treat_this_as_inline">
+                <div style="background:url('http://data.tumblr.com/avatar_707af9c9a227_40.gif') no-repeat;"
+                class="avatar"><a href="http://xtc.tumblr.com"><img
+                src="http://assets.tumblr.com/images/avatar_border_40px.png"/></a></div>
+
+                <div class="arrow"><img src="http://assets.tumblr.com/images/arrow_mask.png" alt=""/></div>
+            
+                                    <a href="http://xtc.tumblr.com/post/24070822" title="Permalink"><img
+                    src="http://assets.tumblr.com/images/permalink.png"
+                    id="permalink_24070822" style="position:absolute; right:1px; top:1px;
+                    width:7px; height:7px; display:none; padding:3px;" alt="permalink"/></a>
+                        
+                                    <div class="control">
+                        <div id="post_24070822_controls">                
+                                                                                                <a href="/reblog/24070822?redirect_to=%2Fdashboard%2F"
+                                    class="reblog_link" title="ReBlog"><img alt="ReBlog"
+                                    src="http://assets.tumblr.com/images/reblog_icon.png"/></a>
+                                                                                    </div>
+                    </div>
+                                
+                <img src="http://assets.tumblr.com/images/round_corner_top_left.png"
+                class="top_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_top_right.png"
+                class="top_right_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_left.png" 
+                class="bottom_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_right.png" 
+                class="bottom_right_corner"/>
+            </div>                
+        </li>
+                
+        <li class="
+            post
+            photo                                    not_mine        "
+                    onmouseover="Element.show('permalink_24070806');"
+            onmouseout="Element.hide('permalink_24070806');"
+                >
+            
+                        
+                                    
+            <div style="padding:1px;">
+                <div class="post_container">                        
+                    
+                    <div class="username">
+                        <a href="http://pootee.tumblr.com">pootee</a>:
+                    </div>
+
+                                                                                                <a href="http://pootee.tumblr.com/post/24070806" onclick="this.style.display='none';
+                            $('big_photo_24070806').style.display=''; return false;"
+                            id="small_photo_24070806"><img class="image" alt="" style="float:left;"
+                            src="http://data.tumblr.com/jVXA3yeek4cbzzwq0yXLD6R8_100.jpg"/></a>
+        
+                            <div id="big_photo_24070806" style="display:none;">
+                                <a href="#" 
+                                onclick="
+                                    $('small_photo_24070806').style.display='';
+                                    $('big_photo_24070806').style.display='none';
+                                    return false;
+                                "><img class="image" alt=""
+                                style="
+                                                                        margin-bottom:10px;                                "
+                                src="http://data.tumblr.com/jVXA3yeek4cbzzwq0yXLD6R8_400.jpg"/></a>
+                            </div>
+                                                
+                        
+                        <a href="http://ffffound.com/image/8808d589b8d189b33e4e2be13eb8bb505b7e5e3d?c=413397">bevel and boss: u tell me</a> (via <a href="http://ffffound.com/home/andreasbanderas/found/">andreasbanderas</a>)                    
+                        <div class="clear"></div>
+                                
+                                        
+                    <div id="notes_outer_container_24070806" style="display:none; overflow:hidden;">
+                        <div style="padding-top:10px;">
+                            <div id="notes_container_24070806" style="display:none; overflow:hidden;"></div>
+            
+                            <div id="notes_control_24070806" class="notes_control">
+                                <div id="notes_loader_24070806" class="notes_loader">
+                                    Loading...
+                                </div>
+                
+                                <div id="notes_hide_link_24070806" style="display:none;" class="notes_hide_link">
+                                    <a href="#" onclick="Effect.SlideUp('notes_outer_container_24070806');
+                                    $('show_notes_link_24070806').style.textDecoration = 'underline';
+                                    return false;" style="color:#79A0BE;">Hide notes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so_ie_doesnt_treat_this_as_inline">
+                <div style="background:url('http://data.tumblr.com/avatar_fe9df0b3c28b_40.gif') no-repeat;"
+                class="avatar"><a href="http://pootee.tumblr.com"><img
+                src="http://assets.tumblr.com/images/avatar_border_40px.png"/></a></div>
+
+                <div class="arrow"><img src="http://assets.tumblr.com/images/arrow_mask.png" alt=""/></div>
+            
+                                    <a href="http://pootee.tumblr.com/post/24070806" title="Permalink"><img
+                    src="http://assets.tumblr.com/images/permalink.png"
+                    id="permalink_24070806" style="position:absolute; right:1px; top:1px;
+                    width:7px; height:7px; display:none; padding:3px;" alt="permalink"/></a>
+                        
+                                    <div class="control">
+                        <div id="post_24070806_controls">                
+                                                                                                <a href="/reblog/24070806?redirect_to=%2Fdashboard%2F"
+                                    class="reblog_link" title="ReBlog"><img alt="ReBlog"
+                                    src="http://assets.tumblr.com/images/reblog_icon.png"/></a>
+                                                                                    </div>
+                    </div>
+                                
+                <img src="http://assets.tumblr.com/images/round_corner_top_left.png"
+                class="top_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_top_right.png"
+                class="top_right_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_left.png" 
+                class="bottom_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_right.png" 
+                class="bottom_right_corner"/>
+            </div>                
+        </li>
+                
+        <li class="
+            post
+            photo            same_user_as_last                        not_mine        "
+                    onmouseover="Element.show('permalink_24070788');"
+            onmouseout="Element.hide('permalink_24070788');"
+                >
+            
+                        
+                                    
+            <div style="padding:1px;">
+                <div class="post_container">                        
+                    
+                    <div class="username">
+                        <a href="http://pootee.tumblr.com">pootee</a>:
+                    </div>
+
+                                                                                                <a href="http://pootee.tumblr.com/post/24070788" onclick="this.style.display='none';
+                            $('big_photo_24070788').style.display=''; return false;"
+                            id="small_photo_24070788"><img class="image" alt="" style="float:left;"
+                            src="http://data.tumblr.com/jVXA3yeek4cbyyiitn1peiZX_100.gif"/></a>
+        
+                            <div id="big_photo_24070788" style="display:none;">
+                                <a href="#" 
+                                onclick="
+                                    $('small_photo_24070788').style.display='';
+                                    $('big_photo_24070788').style.display='none';
+                                    return false;
+                                "><img class="image" alt=""
+                                style="
+                                                                        margin-bottom:10px;                                "
+                                src="http://data.tumblr.com/jVXA3yeek4cbyyiitn1peiZX_400.gif"/></a>
+                            </div>
+                                                
+                        
+                        <a href="http://feeds.feedburner.com/~r/ILoveTypography/~3/217969644/">i love typography, the typography blog - Type Terms: Transitional Type</a>                    
+                        <div class="clear"></div>
+                                
+                                        
+                    <div id="notes_outer_container_24070788" style="display:none; overflow:hidden;">
+                        <div style="padding-top:10px;">
+                            <div id="notes_container_24070788" style="display:none; overflow:hidden;"></div>
+            
+                            <div id="notes_control_24070788" class="notes_control">
+                                <div id="notes_loader_24070788" class="notes_loader">
+                                    Loading...
+                                </div>
+                
+                                <div id="notes_hide_link_24070788" style="display:none;" class="notes_hide_link">
+                                    <a href="#" onclick="Effect.SlideUp('notes_outer_container_24070788');
+                                    $('show_notes_link_24070788').style.textDecoration = 'underline';
+                                    return false;" style="color:#79A0BE;">Hide notes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so_ie_doesnt_treat_this_as_inline">
+                <div style="background:url('http://data.tumblr.com/avatar_fe9df0b3c28b_40.gif') no-repeat;"
+                class="avatar"><a href="http://pootee.tumblr.com"><img
+                src="http://assets.tumblr.com/images/avatar_border_40px.png"/></a></div>
+
+                <div class="arrow"><img src="http://assets.tumblr.com/images/arrow_mask.png" alt=""/></div>
+            
+                                    <a href="http://pootee.tumblr.com/post/24070788" title="Permalink"><img
+                    src="http://assets.tumblr.com/images/permalink.png"
+                    id="permalink_24070788" style="position:absolute; right:1px; top:1px;
+                    width:7px; height:7px; display:none; padding:3px;" alt="permalink"/></a>
+                        
+                                    <div class="control">
+                        <div id="post_24070788_controls">                
+                                                                                                <a href="/reblog/24070788?redirect_to=%2Fdashboard%2F"
+                                    class="reblog_link" title="ReBlog"><img alt="ReBlog"
+                                    src="http://assets.tumblr.com/images/reblog_icon.png"/></a>
+                                                                                    </div>
+                    </div>
+                                
+                <img src="http://assets.tumblr.com/images/round_corner_top_left.png"
+                class="top_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_top_right.png"
+                class="top_right_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_left.png" 
+                class="bottom_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_right.png" 
+                class="bottom_right_corner"/>
+            </div>                
+        </li>
+                
+        <li class="
+            post
+            photo                                    not_mine        "
+                    onmouseover="Element.show('permalink_24070762');"
+            onmouseout="Element.hide('permalink_24070762');"
+                >
+            
+                        
+                                    
+            <div style="padding:1px;">
+                <div class="post_container">                        
+                    
+                    <div class="username">
+                        <a href="http://xtc.tumblr.com">xtc</a>:
+                    </div>
+
+                                                                                                <a href="http://xtc.tumblr.com/post/24070762" onclick="this.style.display='none';
+                            $('big_photo_24070762').style.display=''; return false;"
+                            id="small_photo_24070762"><img class="image" alt="" style="float:left;"
+                            src="http://data.tumblr.com/0ZEBnoQrc4cbxtor2Yby00wO_100.jpg"/></a>
+        
+                            <div id="big_photo_24070762" style="display:none;">
+                                <a href="#" 
+                                onclick="
+                                    $('small_photo_24070762').style.display='';
+                                    $('big_photo_24070762').style.display='none';
+                                    return false;
+                                "><img class="image" alt=""
+                                style="
+                                                                        margin-bottom:10px;                                "
+                                src="http://data.tumblr.com/0ZEBnoQrc4cbxtor2Yby00wO_400.jpg"/></a>
+                            </div>
+                                                
+                        
+                        2nDeceMber (via <a href="http://flickr.com/photos/drawingmonika">!!! Monika !!!</a>)<br />                    
+                        <div class="clear"></div>
+                                
+                                        
+                    <div id="notes_outer_container_24070762" style="display:none; overflow:hidden;">
+                        <div style="padding-top:10px;">
+                            <div id="notes_container_24070762" style="display:none; overflow:hidden;"></div>
+            
+                            <div id="notes_control_24070762" class="notes_control">
+                                <div id="notes_loader_24070762" class="notes_loader">
+                                    Loading...
+                                </div>
+                
+                                <div id="notes_hide_link_24070762" style="display:none;" class="notes_hide_link">
+                                    <a href="#" onclick="Effect.SlideUp('notes_outer_container_24070762');
+                                    $('show_notes_link_24070762').style.textDecoration = 'underline';
+                                    return false;" style="color:#79A0BE;">Hide notes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so_ie_doesnt_treat_this_as_inline">
+                <div style="background:url('http://data.tumblr.com/avatar_707af9c9a227_40.gif') no-repeat;"
+                class="avatar"><a href="http://xtc.tumblr.com"><img
+                src="http://assets.tumblr.com/images/avatar_border_40px.png"/></a></div>
+
+                <div class="arrow"><img src="http://assets.tumblr.com/images/arrow_mask.png" alt=""/></div>
+            
+                                    <a href="http://xtc.tumblr.com/post/24070762" title="Permalink"><img
+                    src="http://assets.tumblr.com/images/permalink.png"
+                    id="permalink_24070762" style="position:absolute; right:1px; top:1px;
+                    width:7px; height:7px; display:none; padding:3px;" alt="permalink"/></a>
+                        
+                                    <div class="control">
+                        <div id="post_24070762_controls">                
+                                                                                                <a href="/reblog/24070762?redirect_to=%2Fdashboard%2F"
+                                    class="reblog_link" title="ReBlog"><img alt="ReBlog"
+                                    src="http://assets.tumblr.com/images/reblog_icon.png"/></a>
+                                                                                    </div>
+                    </div>
+                                
+                <img src="http://assets.tumblr.com/images/round_corner_top_left.png"
+                class="top_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_top_right.png"
+                class="top_right_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_left.png" 
+                class="bottom_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_right.png" 
+                class="bottom_right_corner"/>
+            </div>                
+        </li>
+                
+        <li class="
+            post
+            photo                                    not_mine        "
+                    onmouseover="Element.show('permalink_24070750');"
+            onmouseout="Element.hide('permalink_24070750');"
+                >
+            
+                        
+                                    
+            <div style="padding:1px;">
+                <div class="post_container">                        
+                    
+                    <div class="username">
+                        <a href="http://pootee.tumblr.com">pootee</a>:
+                    </div>
+
+                                                                                                <a href="http://pootee.tumblr.com/post/24070750" onclick="this.style.display='none';
+                            $('big_photo_24070750').style.display=''; return false;"
+                            id="small_photo_24070750"><img class="image" alt="" style="float:left;"
+                            src="http://data.tumblr.com/jVXA3yeek4cbxmsidyULwhEe_100.jpg"/></a>
+        
+                            <div id="big_photo_24070750" style="display:none;">
+                                <a href="#" 
+                                onclick="
+                                    $('small_photo_24070750').style.display='';
+                                    $('big_photo_24070750').style.display='none';
+                                    return false;
+                                "><img class="image" alt=""
+                                style="
+                                                                        margin-bottom:10px;                                "
+                                src="http://data.tumblr.com/jVXA3yeek4cbxmsidyULwhEe_400.jpg"/></a>
+                            </div>
+                                                
+                        
+                        <a href="http://www.centromodaonline.com/nfw/blog/2008/01/15/leticia-la-riviera-madrid/">COOL PEOPLE - LETICIA (La Riviera, Madrid)</a>                    
+                        <div class="clear"></div>
+                                
+                                        
+                    <div id="notes_outer_container_24070750" style="display:none; overflow:hidden;">
+                        <div style="padding-top:10px;">
+                            <div id="notes_container_24070750" style="display:none; overflow:hidden;"></div>
+            
+                            <div id="notes_control_24070750" class="notes_control">
+                                <div id="notes_loader_24070750" class="notes_loader">
+                                    Loading...
+                                </div>
+                
+                                <div id="notes_hide_link_24070750" style="display:none;" class="notes_hide_link">
+                                    <a href="#" onclick="Effect.SlideUp('notes_outer_container_24070750');
+                                    $('show_notes_link_24070750').style.textDecoration = 'underline';
+                                    return false;" style="color:#79A0BE;">Hide notes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so_ie_doesnt_treat_this_as_inline">
+                <div style="background:url('http://data.tumblr.com/avatar_fe9df0b3c28b_40.gif') no-repeat;"
+                class="avatar"><a href="http://pootee.tumblr.com"><img
+                src="http://assets.tumblr.com/images/avatar_border_40px.png"/></a></div>
+
+                <div class="arrow"><img src="http://assets.tumblr.com/images/arrow_mask.png" alt=""/></div>
+            
+                                    <a href="http://pootee.tumblr.com/post/24070750" title="Permalink"><img
+                    src="http://assets.tumblr.com/images/permalink.png"
+                    id="permalink_24070750" style="position:absolute; right:1px; top:1px;
+                    width:7px; height:7px; display:none; padding:3px;" alt="permalink"/></a>
+                        
+                                    <div class="control">
+                        <div id="post_24070750_controls">                
+                                                                                                <a href="/reblog/24070750?redirect_to=%2Fdashboard%2F"
+                                    class="reblog_link" title="ReBlog"><img alt="ReBlog"
+                                    src="http://assets.tumblr.com/images/reblog_icon.png"/></a>
+                                                                                    </div>
+                    </div>
+                                
+                <img src="http://assets.tumblr.com/images/round_corner_top_left.png"
+                class="top_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_top_right.png"
+                class="top_right_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_left.png" 
+                class="bottom_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_right.png" 
+                class="bottom_right_corner"/>
+            </div>                
+        </li>
+                
+        <li class="
+            post
+            photo            same_user_as_last                        not_mine        "
+                    onmouseover="Element.show('permalink_24070705');"
+            onmouseout="Element.hide('permalink_24070705');"
+                >
+            
+                        
+                                    
+            <div style="padding:1px;">
+                <div class="post_container">                        
+                    
+                    <div class="username">
+                        <a href="http://pootee.tumblr.com">pootee</a>:
+                    </div>
+
+                                                                                                <a href="http://pootee.tumblr.com/post/24070705" onclick="this.style.display='none';
+                            $('big_photo_24070705').style.display=''; return false;"
+                            id="small_photo_24070705"><img class="image" alt="" style="float:left;"
+                            src="http://data.tumblr.com/jVXA3yeek4cbx5i1taYPSehz_100.jpg"/></a>
+        
+                            <div id="big_photo_24070705" style="display:none;">
+                                <a href="#" 
+                                onclick="
+                                    $('small_photo_24070705').style.display='';
+                                    $('big_photo_24070705').style.display='none';
+                                    return false;
+                                "><img class="image" alt=""
+                                style="
+                                                                        margin-bottom:10px;                                "
+                                src="http://data.tumblr.com/jVXA3yeek4cbx5i1taYPSehz_400.jpg"/></a>
+                            </div>
+                                                
+                        
+                        <a href="http://pingmag.jp/J/2008/01/15/wally-yacht-high-end-luxury-boat-design/">PingMag Japan - Fulltext - ウォーリーヨット社：夢のステルス攻撃機</a>                    
+                        <div class="clear"></div>
+                                
+                                        
+                    <div id="notes_outer_container_24070705" style="display:none; overflow:hidden;">
+                        <div style="padding-top:10px;">
+                            <div id="notes_container_24070705" style="display:none; overflow:hidden;"></div>
+            
+                            <div id="notes_control_24070705" class="notes_control">
+                                <div id="notes_loader_24070705" class="notes_loader">
+                                    Loading...
+                                </div>
+                
+                                <div id="notes_hide_link_24070705" style="display:none;" class="notes_hide_link">
+                                    <a href="#" onclick="Effect.SlideUp('notes_outer_container_24070705');
+                                    $('show_notes_link_24070705').style.textDecoration = 'underline';
+                                    return false;" style="color:#79A0BE;">Hide notes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so_ie_doesnt_treat_this_as_inline">
+                <div style="background:url('http://data.tumblr.com/avatar_fe9df0b3c28b_40.gif') no-repeat;"
+                class="avatar"><a href="http://pootee.tumblr.com"><img
+                src="http://assets.tumblr.com/images/avatar_border_40px.png"/></a></div>
+
+                <div class="arrow"><img src="http://assets.tumblr.com/images/arrow_mask.png" alt=""/></div>
+            
+                                    <a href="http://pootee.tumblr.com/post/24070705" title="Permalink"><img
+                    src="http://assets.tumblr.com/images/permalink.png"
+                    id="permalink_24070705" style="position:absolute; right:1px; top:1px;
+                    width:7px; height:7px; display:none; padding:3px;" alt="permalink"/></a>
+                        
+                                    <div class="control">
+                        <div id="post_24070705_controls">                
+                                                                                                <a href="/reblog/24070705?redirect_to=%2Fdashboard%2F"
+                                    class="reblog_link" title="ReBlog"><img alt="ReBlog"
+                                    src="http://assets.tumblr.com/images/reblog_icon.png"/></a>
+                                                                                    </div>
+                    </div>
+                                
+                <img src="http://assets.tumblr.com/images/round_corner_top_left.png"
+                class="top_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_top_right.png"
+                class="top_right_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_left.png" 
+                class="bottom_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_right.png" 
+                class="bottom_right_corner"/>
+            </div>                
+        </li>
+                
+        <li class="
+            post
+            link                                    not_mine        "
+                    onmouseover="Element.show('permalink_24070665');"
+            onmouseout="Element.hide('permalink_24070665');"
+                >
+            
+                        
+                                    
+            <div style="padding:1px;">
+                <div class="post_container">                        
+                    
+                    <div class="username">
+                        <a href="http://waku.tumblr.com">waku</a>:
+                    </div>
+
+                                            <a href="http://itpro.nikkeibp.co.jp/article/COLUMN/20070626/275913/" style="font-size:120%; font-family:Helvetica;
+                        font-weight:bold;">DOMから始めるJavaScriptモダン・スクリプティング---目次：ITpro</a>
+                
+                                                    <div style="font-size:90%; margin-top:4px;">
+                                                            </div>
+                                                        
+                                        
+                    <div id="notes_outer_container_24070665" style="display:none; overflow:hidden;">
+                        <div style="padding-top:10px;">
+                            <div id="notes_container_24070665" style="display:none; overflow:hidden;"></div>
+            
+                            <div id="notes_control_24070665" class="notes_control">
+                                <div id="notes_loader_24070665" class="notes_loader">
+                                    Loading...
+                                </div>
+                
+                                <div id="notes_hide_link_24070665" style="display:none;" class="notes_hide_link">
+                                    <a href="#" onclick="Effect.SlideUp('notes_outer_container_24070665');
+                                    $('show_notes_link_24070665').style.textDecoration = 'underline';
+                                    return false;" style="color:#79A0BE;">Hide notes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so_ie_doesnt_treat_this_as_inline">
+                <div style="background:url('http://data.tumblr.com/avatar_b9af23bbbc3f_40.gif') no-repeat;"
+                class="avatar"><a href="http://waku.tumblr.com"><img
+                src="http://assets.tumblr.com/images/avatar_border_40px.png"/></a></div>
+
+                <div class="arrow"><img src="http://assets.tumblr.com/images/arrow_mask.png" alt=""/></div>
+            
+                                    <a href="http://waku.tumblr.com/post/24070665" title="Permalink"><img
+                    src="http://assets.tumblr.com/images/permalink.png"
+                    id="permalink_24070665" style="position:absolute; right:1px; top:1px;
+                    width:7px; height:7px; display:none; padding:3px;" alt="permalink"/></a>
+                        
+                                    <div class="control">
+                        <div id="post_24070665_controls">                
+                                                                                                <a href="/reblog/24070665?redirect_to=%2Fdashboard%2F"
+                                    class="reblog_link" title="ReBlog"><img alt="ReBlog"
+                                    src="http://assets.tumblr.com/images/reblog_icon.png"/></a>
+                                                                                    </div>
+                    </div>
+                                
+                <img src="http://assets.tumblr.com/images/round_corner_top_left.png"
+                class="top_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_top_right.png"
+                class="top_right_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_left.png" 
+                class="bottom_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_right.png" 
+                class="bottom_right_corner"/>
+            </div>                
+        </li>
+                
+        <li class="
+            post
+            photo                                    not_mine        "
+                    onmouseover="Element.show('permalink_24070638');"
+            onmouseout="Element.hide('permalink_24070638');"
+                >
+            
+                        
+                                    
+            <div style="padding:1px;">
+                <div class="post_container">                        
+                    
+                    <div class="username">
+                        <a href="http://pootee.tumblr.com">pootee</a>:
+                    </div>
+
+                                                                                                <a href="http://pootee.tumblr.com/post/24070638" onclick="this.style.display='none';
+                            $('big_photo_24070638').style.display=''; return false;"
+                            id="small_photo_24070638"><img class="image" alt="" style="float:left;"
+                            src="http://data.tumblr.com/jVXA3yeek4cbvqqt9llwaIk3_100.jpg"/></a>
+        
+                            <div id="big_photo_24070638" style="display:none;">
+                                <a href="#" 
+                                onclick="
+                                    $('small_photo_24070638').style.display='';
+                                    $('big_photo_24070638').style.display='none';
+                                    return false;
+                                "><img class="image" alt=""
+                                style="
+                                                                        margin-bottom:10px;                                "
+                                src="http://data.tumblr.com/jVXA3yeek4cbvqqt9llwaIk3_400.jpg"/></a>
+                            </div>
+                                                
+                        
+                        <a href="http://d.hatena.ne.jp/banriman/20080118">Ozaka -fotolog- - 2008-01-18</a>                    
+                        <div class="clear"></div>
+                                
+                                        
+                    <div id="notes_outer_container_24070638" style="display:none; overflow:hidden;">
+                        <div style="padding-top:10px;">
+                            <div id="notes_container_24070638" style="display:none; overflow:hidden;"></div>
+            
+                            <div id="notes_control_24070638" class="notes_control">
+                                <div id="notes_loader_24070638" class="notes_loader">
+                                    Loading...
+                                </div>
+                
+                                <div id="notes_hide_link_24070638" style="display:none;" class="notes_hide_link">
+                                    <a href="#" onclick="Effect.SlideUp('notes_outer_container_24070638');
+                                    $('show_notes_link_24070638').style.textDecoration = 'underline';
+                                    return false;" style="color:#79A0BE;">Hide notes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="so_ie_doesnt_treat_this_as_inline">
+                <div style="background:url('http://data.tumblr.com/avatar_fe9df0b3c28b_40.gif') no-repeat;"
+                class="avatar"><a href="http://pootee.tumblr.com"><img
+                src="http://assets.tumblr.com/images/avatar_border_40px.png"/></a></div>
+
+                <div class="arrow"><img src="http://assets.tumblr.com/images/arrow_mask.png" alt=""/></div>
+            
+                                    <a href="http://pootee.tumblr.com/post/24070638" title="Permalink"><img
+                    src="http://assets.tumblr.com/images/permalink.png"
+                    id="permalink_24070638" style="position:absolute; right:1px; top:1px;
+                    width:7px; height:7px; display:none; padding:3px;" alt="permalink"/></a>
+                        
+                                    <div class="control">
+                        <div id="post_24070638_controls">                
+                                                                                                <a href="/reblog/24070638?redirect_to=%2Fdashboard%2F"
+                                    class="reblog_link" title="ReBlog"><img alt="ReBlog"
+                                    src="http://assets.tumblr.com/images/reblog_icon.png"/></a>
+                                                                                    </div>
+                    </div>
+                                
+                <img src="http://assets.tumblr.com/images/round_corner_top_left.png"
+                class="top_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_top_right.png"
+                class="top_right_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_left.png" 
+                class="bottom_left_corner"/>
+                <img src="http://assets.tumblr.com/images/round_corner_bottom_right.png" 
+                class="bottom_right_corner"/>
+            </div>                
+        </li>
+           
+    </ol>
+
+    <div id="pagination">
+                
+                    <a href="/dashboard/2" class="blue_button"
+            title="Go to older posts">older &amp;#8594;</a>
+            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="footer">
+                <strong> Tumblr, Inc.</strong>
+                <a href="/help">Help</a>
+                <a href="mailto:&amp;#115;&amp;#117;&amp;#112;p&amp;#111;&amp;#114;&amp;#116;&amp;#64;&amp;#116;&amp;#117;&amp;#109;&amp;#98;&amp;#108;&amp;#114;&amp;#46;&amp;#99;&amp;#111;m">Support</a>
+                <a href="/api">API</a>
+                <a href="/content_policy">Content Policy</a>
+                <a href="/terms_of_service">Terms of Service</a>
+                <a href="/privacy_policy">Privacy Policy</a>
+            </div>
+        </div>
+        
+        <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            _uacct = "UA-97144-8";
+            urchinTracker();
+        </script>        
+    </body>
+</html>
