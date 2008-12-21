@@ -53,7 +53,7 @@
 	}
 
 	function get_login_cookie ($db) {
-		$path = split( '/', $_SERVER["SCRIPT_URL"] );
+		$path = split( '/', $_SERVER["PATH_INFO"] );
 		$sessionkey = array_pop($path);
 
 		$sql = 'SELECT * FROM auth WHERE hash = ?';
