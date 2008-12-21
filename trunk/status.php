@@ -7,7 +7,7 @@ require_once 'lib/adodb/adodb-pear.inc.php';
 require_once 'lib/db.php';
 
 require_once 'Cookie.php';
-require_once 'Page.php';
+require_once 'Page_Class.php';
 require_once 'Net/Gearman/Client.php';
 
 class ReblogPage extends Page {
