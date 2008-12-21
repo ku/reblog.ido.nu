@@ -1,15 +1,15 @@
 <?php
 
 require_once 'HTML/Safe.php';
-require_once "Dashboard.php";
+require_once "Dashboard_Class.php";
 
 #$content = file_get_contents("log/raw.html");
 
 function from_tumblr() {
-global $sessionkey;
-$db = get_db_connectiuon();
+    global $sessionkey;
+    $db = get_db_connectiuon();
 
-list($sessionkey, $cookies, $u) = get_login_cookie($db);
+    list($sessionkey, $cookies, $u) = get_login_cookie($db);
 
 	$page = getPage();
 	//$postid = getPostId();
@@ -80,11 +80,12 @@ function from_file ($filename) {
 	$content = file_get_contents($filename);
 	return $content;
 }
+
 require_once 'HTTP/Request.php';
 require_once 'lib/adodb/adodb.inc.php';
 require_once 'lib/adodb/adodb-pear.inc.php';
 require_once 'lib/db.php';
-#require_once 'Dashboard.php';
+#require_once 'Dashboard_Class.php';
 
 
 require_once 'Cookie.php';
