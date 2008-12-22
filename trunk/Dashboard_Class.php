@@ -1,26 +1,27 @@
 <?php
-
 require_once 'mobileicon.php';
+include_once('Net/UserAgent/Mobile.php'); 
 
-	function to_mobile_url($u) {
-		# shortcut key.
-		if ( preg_match( '%^(#|/reblog/)%', $u) ) {
-			return $u;
-		}
-		if ( preg_match( '|^http://([\w\-]+).tumblr.com((/(.{6}).+)?)|', $u, $m) ) {
-			if ( $m[2] == '' or ($m[1] != 'mobile' and $m[1] != 'data' ) ) {
-				if ( $m[2] == '' ) 
-					return 'http://' . $m[1] . '.reblog.ido.nu' . $m[2];
-				else {
-					$path = preg_replace( '/(\/post\/\d+).*/', '$1', $m[2]);
-					return 'http://' . $m[1] . '.tumblr.com/mobile' . $path;
-				}
-			}
-		} else {
-			$u = '/redirect/' . $u;
-		}
-		return $u;
-	}
+function to_mobile_url($u) {
+    # shortcut key.
+    if ( preg_match( '%^(#|/reblog/)%', $u) ) {
+        return $u;
+    }
+    if ( preg_match( '|^http://([\w\-]+).tumblr.com((/(.{6}).+)?)|', $u, $m) ) {
+        if ( $m[2] == '' or ($m[1] != 'mobile' and $m[1] != 'data' ) ) {
+            if ( $m[2] == '' ) 
+                return 'http://' . $m[1] . '.' . $_SERVER['SCRIPT_URI'] . $m[2];
+            else {
+                $path = preg_replace( '/(\/post\/\d+).*/', '$1', $m[2]);
+                return 'http://' . $m[1] . '.tumblr.com/mobile' . $path;
+            }
+        }
+    } else {
+        $u = '/redirect/' . $u;
+    }
+    return $u;
+}
+
 function image_replace_callback($m) {
 	if ( preg_match( '/\/$/', $m[1] ) ) {
 		return "<img" . $m[1] . ">";
@@ -77,6 +78,7 @@ class Dashboard {
 	function html_header() {
 			global $sessionkey;
 		$me = $this->me;
+        
 		print <<<__HTML__
 <html>
 <head>
@@ -85,8 +87,8 @@ class Dashboard {
 </head>
 <body>
 <h1>$me dashboard</h1>
-
 __HTML__;
+
 		$this->page = $page = getPage();
 		if ( $page == 1 ) {
 				print "plz bookmark this page.";
@@ -100,6 +102,7 @@ __HTML__;
 		}
 
 	}
+    
 	function html_footer($last_postid) {
 		global $sessionkey;
 
@@ -110,16 +113,13 @@ __HTML__;
 		$u .= "&.rand=" . rand();
 
 		$now = time();
-		//print "<div style=\"clear: both\">";
+
 		print "<hr />";
         $k = '*';
 		print "[$k]<a href=\"/status/$sessionkey?at=$now\" accesskey=\"$k\" directkey=\"$k\">reblog status</a>";
 		print "<br />";
 		$k = '#';
 		print "[$k]<a href=\"$u\" rel=\"next\" accesskey=\"$k\" directkey=\"$k\">older</a>";
-
-
-		//print "</div>";
 		print "<hr />";
 		print $_SERVER['HTTP_HOST'];
 
@@ -129,17 +129,13 @@ __HTML__;
 	function render () {
 	 	$this->html_header();
 
-		print "<div class=\"autopagerize_page_element\">";
 		foreach ( $this->posts as $k => $p ) {
 			$classname = ($k % 2) ? 'odd': 'even';
 			print "<a name=p$k id=p$k />";
 
 			if ( @$_REQUEST["reblog"] and "p$k" == @$_REQUEST["anchor"] ) { 
-				//print "<div>reblogging...</div>";
                 print 'reblogging...<br />';
 			}
-
-			//print "<div class=\"$classname\" style=\"clear: both\" >\n";
             print '<hr />';
             
 			$u = $p->userid;
@@ -148,7 +144,7 @@ __HTML__;
 			$type  = $p->postType;
 
 			
-			print "<a href=#p$k accesskey=$k directkey=$k>";
+			print "[<a href=#p$k accesskey=$k directkey=$k />";
 			$icon = get_number_icon($k);
 		 	if ( preg_match('/KDDI-/', $_SERVER['HTTP_USER_AGENT'], $m) ) {
 				$icon = preg_replace('/\D/', '', $icon);
@@ -156,7 +152,7 @@ __HTML__;
 			} else {
 				print "$k";
 			}
-			print "</a>";
+			print "</a>]";
 
 			$post_id = $p->id;
 			$page = $this->page;
@@ -166,28 +162,21 @@ __HTML__;
 			if ( $token =$p->reblogToken ) {
 				print "<a href=\"/reblog/$sessionkey?permalink=$link&postid=$post_id&token=$token&anchor=p$k&page=$page\">reblog</a>";
 			}
-			print " <a href=\"http://$u.reblog.ido.nu/\">$u</a> ";
-			# mobile version page seems obsolete.
-			#print "<a href=\"$safeLink\">$type</a>";
-			print "<br/>";
+			print '<a href="http://' . $u . $_SERVER['HTTP_HOST'] . '">' . $u . '</a>';
+
+			print "<br/><br/>";
 
 			$post_content = mb_convert_encoding($p->post_content, 'SHIFT_JIS', 'UTF-8');
 			$post_title = mb_convert_encoding($p->post_title, 'SHIFT_JIS', 'UTF-8');
-			#$post_content = $p->post_content;
-			#$post_title = $p->post_title;
 
 			$content = '';
 
 			switch($type) {
 				case 'photo':
-					// $p->id; reblog
 					$img = $p->image;
 					$qvga = preg_replace('/_100.jpg/', '_250.jpg', $img);
-					//print "<a href=$qvga style=\"float:left;\"><img src=\"$img\" width=100/></a>";
-                    print "<a href=\"/mobile_image.php?img=$qvga\" ><img src=\"/thumb_resize.php?img=$img\" width=100/></a>";
-                    //$content .= "<div style=\"float:left;\">";
+                    print "<a href=\"/mobile_image.php?img=$qvga\" ><img src=\"/thumb_resize.php?img=$img\" width=80/></a>";
 					$content .= $post_content;
-					//$content .= "</div>";
 					break;
 				case 'quote':
 					$content .= $post_content;
@@ -196,7 +185,7 @@ __HTML__;
 				case 'link':
 					$l = $p->linkurl;
 					$t = $post_title;
-					$content .= "<div><a href=\"$l\">$t</a></div>";
+					$content .= "<a href=\"$l\">$t</a><br />";
 					$content .= $post_content;
 					break;
 				case 'regular':
@@ -209,15 +198,20 @@ __HTML__;
 					$content .= $post_content;
 					break;
 				default:
-					#print_r($p);
 					$content .= "unknown type $type";
 			}
-			print $content;
-			print "\n</div>\n";
+            
+            // for DoCoMo, remove div
+            $agent = Net_UserAgent_Mobile::singleton();
+            if ($agent->isDoCoMo()) {
+                $content = preg_replace('%<div.*?>%', '<br/>', $content);
+                $content = preg_replace('%</div>%', '<br/>', $content);
+            }
+			
+            print $content. "<br/>" ;
 
 			$last_postid = $post_id;
 		}
-		//print "</div >\n";
 
 		$n =  count($this->posts);
 		$p = $this->posts[$n-1];
@@ -241,156 +235,27 @@ __HTML__;
 
 		$content = '<html><body>' . $result . '</body></html>';
 
-		// remove reblog lineages.
-		$content = preg_replace( '/<p><a href=".+?">\w+<\/a>:<\/p>/', '', $content );
 		$content = $this->removeEntities($content);
-		#$this->content =  $content;
 
 		return $content;
 	}
 
 function removeEntities($html) {
-	$html = preg_replace('/&mdash;/', '-', $html);
-	$html = preg_replace('/&nbsp;/', ' ', $html);
+    // remove reblog lineages.
+    $html = preg_replace( '/<p><a href=".+?">\w+<\/a>:<\/p>/', '', $html);
+	$html = preg_replace('/&mdash;/', ' ', $html);
+	$html = preg_replace('/\&nbsp;/', '', $html);
 	$html = preg_replace('/&copy;/', '(c)', $html);
 	$html = preg_replace('/&(?!amp;)/', '&amp;', $html);
-
-	#$html = preg_replace('/<img\r?\n/', '<img', $html);
 	
-	# is this a PHP bug? replaces everything with ''. sucks.
+	// is this a PHP bug? replaces everything with ''. sucks.
 	$html = preg_replace_callback('/<img(.+?)>/ms', "image_replace_callback", $html);
-	#$html = preg_replace_callback('/<img(.+?)>/', "image_replace_callback", $html);
-	return $html;
-}
-
-}
-/*
-class Renderer {
-
-	function __construct($x) {
-		$this->x = $x;
-
-		$me = $this->x1('//div[@id="account_menu"]/ul/li[last()]/a/@href');
-		$me = $me->nodeValue;
-
-		if ( preg_match('/\/\/([^.]+)\./', $me, $m ) ) {
-			$this->me = $m[1];
-		} else {
-			$this->me = "";
-		}; 
-	}
-
-    function x1 ($expression, $context = null) {
-		$r = $this->x($expression, $context);
-		return ( $r ) ? $r[0]: $r;
-    }
-    function x ($expression, $context = null) {
-        if ( ! $context ) $context = $this->x->document;
-        $nodes = $this->x->evaluate($expression, $context);
-		$res = array();
-        foreach ($nodes as $k => $v ) {
-        	$res[] = $v;
-        }
-        return $res;
-    }
+	// $html = preg_replace_callback('/<img(.+?)>/', "image_replace_callback", $html);
 	
-	function render($posts) {
-		$this->html_header();
-		$last_postid = null;
-		print "<div class=\"autopagerize_page_element\">";
-		foreach ( $posts as $k => $paragraph ) {
-			$classname = ($k % 2) ? 'odd': 'even';
-			print "<a name=p$k id=p$k />";
-
-			if ( @$_REQUEST["reblog"] and "p$k" == @$_REQUEST["anchor"] ) { 
-				print "<div>reblogging...</div>";
-			}
-
-			print "<div class=\"$classname\" style=\"clear: both\" >\n";
-			$p = new Post($this->x, $paragraph);
-
-			if ( $p->getPostInfo() )
-				continue;
-
-			$u = $p->userid;
-			$link  = $p->permalink;
-			$safeLink  = $p->safePermalink;
-			$type  = $p->postType;
-
-			
-			print "<a href=#p$k accesskey=$k directkey=$k>";
-			$icon = get_number_icon($k);
-		 	if ( preg_match('/KDDI-/', $_SERVER['HTTP_USER_AGENT'], $m) ) {
-				$icon = preg_replace('/\D/', '', $icon);
-				print "<img localsrc=$icon />";
-			} else {
-				print "$k";
-			}
-			print "</a>";
-
-			$post_id = $p->id;
-			$page = $this->page;
-
-			global $sessionkey;
-
-			if ( $token =$p->reblogToken ) {
-				print "<a href=\"/reblog/$sessionkey?permalink=$link&postid=$post_id&token=$token&anchor=p$k&page=$page\">reblog</a>";
-			}
-			print " <a href=\"http://$u.reblog.ido.nu/\">$u</a> ";
-			# mobile version page seems obsolete.
-			#print "<a href=\"$safeLink\">$type</a>";
-			print "<br/>";
-
-			$post_content = mb_convert_encoding($p->post_content, 'SHIFT_JIS', 'UTF-8');
-			$post_title = mb_convert_encoding($p->post_title, 'SHIFT_JIS', 'UTF-8');
-			#$post_content = $p->post_content;
-			#$post_title = $p->post_title;
-
-			$content = '';
-
-			switch($type) {
-				case 'photo':
-					// $p->id; reblog
-					$img = $p->image;
-					$qvga = preg_replace('/_100.jpg/', '_250.jpg', $img);
-					print "<a href=$qvga style=\"float:left;\"><img src=\"$img\" width=100/></a>";
-					$content .= "<div style=\"float:left;\">";
-					$content .= $post_content;
-					$content .= "</div>";
-					break;
-				case 'quote':
-					$content .= $post_content;
-					$content .= $post_title;
-					break;
-				case 'link':
-					$l = $p->linkurl;
-					$t = $post_title;
-					$content .= "<div><a href=\"$l\">$t</a></div>";
-					$content .= $post_content;
-					break;
-				case 'regular':
-					$content .= $post_content;
-					break;
-				case 'video':
-					$content .= $post_content;
-					break;
-				case 'audio':
-					$content .= $post_content;
-					break;
-				default:
-					#print_r($p);
-					$content .= "unknown type $type";
-			}
-			print $content;
-			print "\n</div>\n";
-
-			$last_postid = $post_id;
-		}
-		print "</div >\n";
-		$this->html_footer($last_postid);
-	}
+    return $html;
 }
-*/
+
+}
 
 class Post {
 	public $id = null;
@@ -423,10 +288,10 @@ class Post {
 		foreach ( $contents as $k => $node ) {
 			$html .= dump_children($node);
 		}
-
-		$html = preg_replace('/^\s*“/', '', $html);
-		$html = preg_replace('/”\s*$/', '', $html);
-		$html = preg_replace('/　\n?$/', '', $html);
+        // add u option, this still seema not working, hmm
+		$html = preg_replace('/^\s*“/u', '', $html);
+		$html = preg_replace('/”\s*$/u', '', $html);
+		$html = preg_replace('/　\n?$/u', '', $html);
 		$this->post_content = $html;
 		$this->post_content = $html;
 
