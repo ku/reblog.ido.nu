@@ -1,5 +1,5 @@
 <?php
-//サムネイル用に一律に幅 100px にリサイズ
+//サムネイル用に一律に幅 80px にリサイズ
 include_once('Net/UserAgent/Mobile.php'); 
 
 if (isset($_GET['img'])  && !empty($_GET['img'])) {
@@ -90,9 +90,9 @@ if ($image_x > $image_y) {
 }
 */
 
-//サムネイル用に一律に幅 100px にリサイズ
-$output_image_x = 100;
-$output_image_y = 100*$image_y/$image_x;
+//サムネイル用に一律に幅 80px にリサイズ
+$output_image_x = 80;
+$output_image_y = 80*$image_y/$image_x;
 
 if (strcmp($output_image_type, 'jpg') == 0) {
     
