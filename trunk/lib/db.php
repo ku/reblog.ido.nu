@@ -1,19 +1,21 @@
 <?php
-	function get_db_connectiuon() {
-		
-			$type = "mysql";
-			$user = "root";
-			$pass = "passwd";
-			$host = "localhost";
-			$dbname = "tumblr";
+require_once('./config.php');
 
-			$dsn    = "$type://$user:$pass@$host/$dbname";
-			$db = ADONewConnection('mysql'); # eg 'mysql' or 'postgres'
-				//$db->debug = true;
-				if ( ! $db->connect($host, $user, $pass, $dbname) ) {
-					die ($this->db->getMessage());
-				}
-			$db->setFetchMode(DB_FETCHMODE_ASSOC);
-			return $db;
-	}
+function get_db_connectiuon() {
+    
+        $type = DB_TYPE;
+        $user = DB_USER;
+        $pass = DB_PASS;
+        $host = DB_HOST;
+        $dbname = DB_NAME;
+
+        $dsn    = "$type://$user:$pass@$host/$dbname";
+        $db = ADONewConnection($type); # eg 'mysql' or 'postgres'
+            //$db->debug = true;
+            if ( ! $db->connect($host, $user, $pass, $dbname) ) {
+                die ($this->db->getMessage());
+            }
+        $db->setFetchMode(DB_FETCHMODE_ASSOC);
+        return $db;
+}
 ?>
