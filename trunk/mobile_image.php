@@ -85,6 +85,11 @@ if ($image_x > $image_y) {
     }
 }
 
+// 容量オーバーになることがあるので
+// 少し縮小（特に縦長の画像の場合）
+$output_image_x = 0.85*$output_image_x;
+$output_image_y = 0.85*$output_image_y; 
+
 if (strcmp($output_image_type, 'jpg') == 0) {
     
     $output_image_data = @imagecreatetruecolor($output_image_x, $output_image_y);
