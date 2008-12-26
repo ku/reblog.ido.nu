@@ -164,10 +164,10 @@ __HTML__;
 			}
 			print '<a href="http://' . $u . $_SERVER['HTTP_HOST'] . '">' . $u . '</a>';
 
-			print "<br/><br/>";
+			print "<br/>";
 
-			$post_content = mb_convert_encoding($p->post_content, 'SHIFT_JIS', 'UTF-8');
-			$post_title = mb_convert_encoding($p->post_title, 'SHIFT_JIS', 'UTF-8');
+			$post_content = nument2chr(mb_convert_encoding($p->post_content, 'SHIFT_JIS', 'UTF-8'));
+			$post_title = nument2chr(mb_convert_encoding($p->post_title, 'SHIFT_JIS', 'UTF-8'));
 
 			$content = '';
 
@@ -175,7 +175,7 @@ __HTML__;
 				case 'photo':
 					$img = $p->image;
 					$qvga = preg_replace('/_100.jpg/', '_250.jpg', $img);
-                    print "<a href=\"/mobile_image.php?img=$qvga\" ><img src=\"/thumb_resize.php?img=$img\" width=80/></a>";
+                    print "<a href=\"/mobile_image.php?img=$qvga\" ><img src=\"/thumb_resize.php?img=$img\" width=50/></a>";
 					$content .= $post_content;
 					break;
 				case 'quote':
@@ -186,7 +186,7 @@ __HTML__;
 					$l = $p->linkurl;
 					$t = $post_title;
 					$content .= "<a href=\"$l\">$t</a><br />";
-					$content .= $post_content;
+					$content .= $post_conten;
 					break;
 				case 'regular':
 					$content .= $post_content;
@@ -200,15 +200,8 @@ __HTML__;
 				default:
 					$content .= "unknown type $type";
 			}
-            
-            // for DoCoMo, remove div
-            $agent = Net_UserAgent_Mobile::singleton();
-            if ($agent->isDoCoMo()) {
-                $content = preg_replace('%<div.*?>%', '<br/>', $content);
-                $content = preg_replace('%</div>%', '<br/>', $content);
-            }
 			
-            print $content. "<br/>" ;
+            print $content;
 
 			$last_postid = $post_id;
 		}
@@ -240,21 +233,20 @@ __HTML__;
 		return $content;
 	}
 
-function removeEntities($html) {
-    // remove reblog lineages.
-    $html = preg_replace( '/<p><a href=".+?">\w+<\/a>:<\/p>/', '', $html);
-	$html = preg_replace('/&mdash;/', ' ', $html);
-	$html = preg_replace('/\&nbsp;/', '', $html);
-	$html = preg_replace('/&copy;/', '(c)', $html);
-	$html = preg_replace('/&(?!amp;)/', '&amp;', $html);
-	
-	// is this a PHP bug? replaces everything with ''. sucks.
-	$html = preg_replace_callback('/<img(.+?)>/ms', "image_replace_callback", $html);
-	// $html = preg_replace_callback('/<img(.+?)>/', "image_replace_callback", $html);
-	
-    return $html;
-}
-
+    function removeEntities($html) {
+        // remove reblog lineages.
+        $html = preg_replace( '/<p><a href=".+?">\w+<\/a>:<\/p>/', '', $html);
+        $html = preg_replace('/&mdash;/', ' ', $html);
+        $html = preg_replace('/\&nbsp;/', '', $html);
+        $html = preg_replace('/&copy;/', '(c)', $html);
+        $html = preg_replace('/&(?!amp;)/', '&amp;', $html);
+        
+        // is this a PHP bug? replaces everything with ''. sucks.
+        $html = preg_replace_callback('/<img(.+?)>/ms', "image_replace_callback", $html);
+        // $html = preg_replace_callback('/<img(.+?)>/', "image_replace_callback", $html);
+        
+        return $html;
+    }
 }
 
 class Post {
@@ -288,11 +280,10 @@ class Post {
 		foreach ( $contents as $k => $node ) {
 			$html .= dump_children($node);
 		}
-        // add u option, this still seema not working, hmm
-		$html = preg_replace('/^\s*“/u', '', $html);
-		$html = preg_replace('/”\s*$/u', '', $html);
-		$html = preg_replace('/　\n?$/u', '', $html);
-		$this->post_content = $html;
+
+        $html = preg_replace('/^\s*“/', '', $html);
+		$html = preg_replace('/”\s*$/', '', $html);
+		$html = preg_replace('/　\n?$/', '', $html);
 		$this->post_content = $html;
 
 		$node = $this->x1( './/div[@class="post_container"]/div[position() = last() -1]' );
@@ -453,6 +444,19 @@ function getPage() {
 	return $page;
 }
 
-
+function nument2chr($string) {
+    // 文字コードチェック
+    $encoding = strtolower(mb_detect_encoding($string));
+    if (!preg_match("/^utf/", $encoding) and $encoding != 'ascii') {
+        return '';
+    }
+    // 16 進数の文字参照(らしき表記)が含まれているか
+    $excluded_hex = $string;
+    if (preg_match("/&#[xX][0-9a-zA-Z]{2,8};/", $string)) {
+        // 16 進数表現は 10 進数に変換
+        $excluded_hex = preg_replace("/&#[xX]([0-9a-zA-Z]{2,8});/e", "'&#'.hexdec('$1').';'", $string);
+    }
+    return mb_decode_numericentity($excluded_hex, array(0x0, 0x10000, 0, 0xfffff), "Shift-jis");
+}
 
 ?>
