@@ -13,36 +13,30 @@
 			$err = 1;
 		} else {
 			$res = $req->getResponseBody();
-			if ( strstr($res, '<meta http-equiv="Refresh" content="0;url=/dashboard">' ) === false ) {
+			if (strstr($res, '<meta http-equiv="Refresh" content="0;url=/dashboard">' ) === false) {
 				$err = 1;
 			} else {
 
-				/*if (  $req->getResponseHeader('Location') == '' ) {
-					$err = true;
-				} else
+                $cookies = $req->getResponseCookies();
+                $cookie_content = serialize($cookies);
+                
+                $k = calc_sha1($email, $password);
+                if ( $persistent == '' ) {
+                    $email = '';
+                    $password = '';
+                }
 
-			*/	{
-					$cookies = $req->getResponseCookies();
-					$cookie_content = serialize($cookies);
+                $db = get_db_connectiuon();
 
-					$k = calc_sha1($email, $password);
-					if ( $persistent == '' ) {
-						$email = '';
-						$password = '';
-					}
+                if ( $hash ) {
+                    $db->query('UPDATE auth SET cookie = ? WHERE hash = ?',
+                        array($cookie_content, $hash));
+                } else {
+                    $hash = $k;
+                    $db->query('INSERT auth (hash, cookie, email, password) VALUES (?,?,?,?)',
+                        array($k, $cookie_content, $email, $password));
+                }
 
-					$db = get_db_connectiuon();
-
-					if ( $hash ) {
-						$db->query('UPDATE auth SET cookie = ? WHERE hash = ?',
-							array($cookie_content, $hash));
-					} else {
-						$hash = $k;
-						$db->query('INSERT auth (hash, cookie, email, password) VALUES (?,?,?,?)',
-							array($k, $cookie_content, $email, $password));
-					}
-
-				}
 			}
 		}
 		
