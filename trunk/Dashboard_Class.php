@@ -39,7 +39,8 @@ class Dashboard {
 		$dom->loadXML( $html );
 
 		$this->dom = $dom;
-
+        
+        $this->agent = Net_UserAgent_Mobile::singleton();
 	}
 
 	function parse() {
@@ -96,8 +97,8 @@ div.odd {
 </head>
 <body>
 <h1>$me dashboard</h1>
-__HTML__;
 
+__HTML__;
 		$this->page = $page = getPage();
 		if ( $page == 1 ) {
 				print "plz bookmark this page.";
@@ -114,6 +115,7 @@ __HTML__;
     
 	function html_footer($last_postid) {
 		global $sessionkey;
+        $agent = $this->agent;
 
 		$nextpage = $this->page + 1;
 
@@ -122,31 +124,56 @@ __HTML__;
 		$u .= "&.rand=" . rand();
 
 		$now = time();
-
-		print "<hr />";
+        if ($agent->isDoCoMo()) {
+		    print "<hr />";
+        } else {
+            print "<div style=\"clear: both\">";
+        }
         $k = '*';
 		print "[$k]<a href=\"/status/$sessionkey?at=$now\" accesskey=\"$k\" directkey=\"$k\">reblog status</a>";
 		print "<br />";
 		$k = '#';
 		print "[$k]<a href=\"$u\" rel=\"next\" accesskey=\"$k\" directkey=\"$k\">older</a>";
-		print "<hr />";
-		print $_SERVER['HTTP_HOST'];
+		
+        if ($agent->isDoCoMo()) {
+        } else {
+            print "</div>";
+        }
+        
+        print "<hr />";
+        print $_SERVER['HTTP_HOST'];
 
 		print "</body></html>";
 	}
 
 	function render () {
 	 	$this->html_header();
-
+         
+        $agent = $this->agent;
+        
+        if ($agent->isDoCoMo()) {
+        } else {
+            print "<div class=\"autopagerize_page_element\">";
+        }
+        
 		foreach ( $this->posts as $k => $p ) {
 			$classname = ($k % 2) ? 'odd': 'even';
 			print "<a name=p$k id=p$k />";
 
 			if ( @$_REQUEST["reblog"] and "p$k" == @$_REQUEST["anchor"] ) { 
-                print 'reblogging...<br />';
+                if ($agent->isDoCoMo()) {
+                    print 'reblogging...<br />';
+                } else {
+                    print "<div>reblogging...</div>";
+                }
 			}
-            print '<hr />';
             
+            if ($agent->isDoCoMo()) {
+                print '<hr />';
+            } else {
+                print "<div class=\"$classname\" style=\"clear: both\" >\n";
+            }
+           
 			$u = $p->userid;
 			$link  = $p->permalink;
 			$safeLink  = $p->safePermalink;
@@ -155,7 +182,7 @@ __HTML__;
 			
 			print "[<a href=#p$k accesskey=$k directkey=$k />";
 			$icon = get_number_icon($k);
-		 	if ( preg_match('/KDDI-/', $_SERVER['HTTP_USER_AGENT'], $m) ) {
+		 	if ($agent->isEZWeb()) {
 				$icon = preg_replace('/\D/', '', $icon);
 				print "<img localsrc=$icon />";
 			} else {
@@ -172,8 +199,7 @@ __HTML__;
 				print "<a href=\"/reblog/$sessionkey?permalink=$link&postid=$post_id&token=$token&anchor=p$k&page=$page\">reblog</a>";
 			}
 			print '<a href="http://' . $u . $_SERVER['HTTP_HOST'] . '">' . $u . '</a>';
-
-			print "<br/>";
+            print "<br/>";
 
 			$post_content = nument2chr(mb_convert_encoding($p->post_content, 'SHIFT_JIS', 'UTF-8'));
 			$post_title = nument2chr(mb_convert_encoding($p->post_title, 'SHIFT_JIS', 'UTF-8'));
@@ -184,8 +210,15 @@ __HTML__;
 				case 'photo':
 					$img = $p->image;
 					$qvga = preg_replace('/_100.jpg/', '_250.jpg', $img);
-                    print "<a href=\"/mobile_image.php?img=$qvga\" ><img src=\"/thumb_resize.php?img=$img\" width=50/></a>";
-					$content .= $post_content;
+                    if ($agent->isDoCoMo()) {
+                        print "<a href=\"/mobile_image.php?img=$qvga\" ><img src=\"/thumb_resize.php?img=$img\" width=50/></a>";
+					    $content .= $post_content;
+                    } else {
+                        print "<a href=$qvga style=\"float:left;\"><img src=\"$img\" width=100/></a>";
+                        $content .= "<div style=\"float:left;\">";
+                        $content .= $post_content;
+                        $content .= "</div>";
+                    }
 					break;
 				case 'quote':
 					$content .= $post_content;
@@ -211,9 +244,19 @@ __HTML__;
 			}
 			
             print $content;
-
+            
+            if ($agent->isDoCoMo()) {
+            } else {
+                print "\n</div>\n";
+            }
+            
 			$last_postid = $post_id;
 		}
+        
+        if ($agent->isDoCoMo()) {
+        } else {
+            print "</div>\n";
+        }
 
 		$n =  count($this->posts);
 		$p = $this->posts[$n-1];
@@ -234,17 +277,17 @@ __HTML__;
 		$parser->deleteTagsContent[] = 'noscript';
 		$result = $parser->parse($content);
 		$result = $parser->getXHTML();
-
+        
 		$content = '<html><body>' . $result . '</body></html>';
 
+	    // remove reblog lineages.
+		$content = preg_replace( '/<p><a href=".+?">\w+<\/a>:<\/p>/', '', $content );
 		$content = $this->removeEntities($content);
 
 		return $content;
 	}
 
     function removeEntities($html) {
-        // remove reblog lineages.
-        $html = preg_replace( '/<p><a href=".+?">\w+<\/a>:<\/p>/', '', $html);
         $html = preg_replace('/&mdash;/', ' ', $html);
         $html = preg_replace('/\&nbsp;/', '', $html);
         $html = preg_replace('/&copy;/', '(c)', $html);
