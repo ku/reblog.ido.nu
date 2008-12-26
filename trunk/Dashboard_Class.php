@@ -84,6 +84,15 @@ class Dashboard {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=shift_jis"/>
 <title>$me dashboard</title>
+<style>
+div {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+div.odd {
+	background-color: rgb(245, 245, 245);
+}
+</style>
 </head>
 <body>
 <h1>$me dashboard</h1>
