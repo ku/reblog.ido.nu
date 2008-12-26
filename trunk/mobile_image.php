@@ -59,6 +59,8 @@ if (empty($view_y)) {
     $view_y = '320';
 }
 
+// 拡張子 gif なのに jpeg ってケースがある...
+// 拡張子じゃなく判別できる？
 if (strcmp($image_type, 'jpg') == 0) {
     $image_data = @imagecreatefromjpeg($image_file);
 } elseif (strcmp($image_type, 'gif') == 0) {
@@ -70,25 +72,31 @@ if (strcmp($image_type, 'jpg') == 0) {
 $image_x =@imagesx($image_data);
 $image_y =@imagesy($image_data);
 
-$output_image_x = $image_x;
-$output_image_x = $image_y;
 
-if ($image_x > $image_y) {
-    if ($image_x > $view_x) {
-        $output_image_x = $view_x;
-        $output_image_y = $image_y*($view_x/$image_x);
-    }
+
+if ($_REQUEST['tn'] == 1) {
+    //サムネイル用に一律に幅 50px にリサイズ
+    $output_image_x = 50;
+    $output_image_y = 50*$image_y/$image_x;
 } else {
-    if ($image_y > $view_y) {
-        $output_image_x = $image_x*($view_y/$image_y);
-        $output_image_y = $view_y;
+    $output_image_x = $image_x;
+    $output_image_x = $image_y;
+    if ($image_x > $image_y) {
+        if ($image_x > $view_x) {
+            $output_image_x = $view_x;
+            $output_image_y = $image_y*($view_x/$image_x);
+        }
+    } else {
+        if ($image_y > $view_y) {
+            $output_image_x = $image_x*($view_y/$image_y);
+            $output_image_y = $view_y;
+        }
     }
+    // 容量オーバーになることがあるので
+    // 少し縮小（特に縦長の画像の場合）
+    $output_image_x = 0.85*$output_image_x;
+    $output_image_y = 0.85*$output_image_y; 
 }
-
-// 容量オーバーになることがあるので
-// 少し縮小（特に縦長の画像の場合）
-$output_image_x = 0.85*$output_image_x;
-$output_image_y = 0.85*$output_image_y; 
 
 if (strcmp($output_image_type, 'jpg') == 0) {
     
