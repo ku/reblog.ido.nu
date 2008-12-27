@@ -79,25 +79,30 @@ class Dashboard {
 	function html_header() {
 		global $sessionkey;
 		$me = $this->me;
+        $agent = $this->agent;
         
-		print <<<__HTML__
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=shift_jis"/>
-<title>$me dashboard</title>
-<style>
-div {
-padding-top: 2px;
-padding-bottom: 2px;
-}
-div.odd {
-background-color: rgb(245, 245, 245);
-}
-</style>
-</head>
-<body>
-<h1>$me dashboard</h1>
-__HTML__;
+        print '<html>';
+        print '<head>';
+        print '<meta http-equiv="Content-Type" content="text/html; charset=shift_jis"/>';
+        print "<title>$me dashboard</title>";
+        
+		if ($agent->isDoCoMo()) {
+        } else {
+            print '<style>';
+            print 'div {';
+            print 'padding-top: 2px;';
+            print 'padding-bottom: 2px;';
+            print '}';
+            print 'div.odd {';
+            print 'background-color: rgb(245, 245, 245);';
+            print '}';
+            print '</style>";';
+        }
+        
+        print '</head>';
+        print '<body>';
+        print "<h1>$me dashboard</h1>";
+
 		$this->page = $page = getPage();
 		if ( $page == 1 ) {
 				print "plz bookmark this page.";
