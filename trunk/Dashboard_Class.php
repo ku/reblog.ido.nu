@@ -135,7 +135,7 @@ __HTML__;
 		print "[$k]<a href=\"/status/$sessionkey?at=$now\" accesskey=\"$k\" directkey=\"$k\">reblog status</a>";
 		print "<br />";
 		$k = '#';
-		print "[$k]<a href=\"$u\" rel=\"next\" accesskey=\"$k\" directkey=\"$k\">older</a>";
+		print "[$k]<a href=\"$u\" rel=\"next\" accesskey=\"$k\" directkey=\"$k\">older</a><br />";
         
         if ($agent->isDoCoMo()) {
         } else {
