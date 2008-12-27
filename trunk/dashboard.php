@@ -2,6 +2,7 @@
 
 require_once 'HTML/Safe.php';
 require_once "Dashboard_Class.php";
+require_once('Net/UserAgent/Mobile.php'); 
 
 #$content = file_get_contents("log/raw.html");
 
@@ -12,6 +13,14 @@ function from_tumblr() {
     list($sessionkey, $cookies, $u) = get_login_cookie($db);
 
 	$page = getPage();
+    
+    $agent = Net_UserAgent_Mobile::singleton();
+    
+    // paging a page
+    if ($agent->isDoCoMo()) {
+        $page = ceil($page/2);
+    }
+    
 	//$postid = getPostId();
 
 	$url = 'http://www.tumblr.com/dashboard/';

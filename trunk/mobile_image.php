@@ -75,9 +75,9 @@ $image_y =@imagesy($image_data);
 
 
 if ($_REQUEST['tn'] == 1) {
-    //サムネイル用に一律に幅 50px にリサイズ
-    $output_image_x = 50;
-    $output_image_y = 50*$image_y/$image_x;
+    //サムネイル用に一律に幅 80px にリサイズ
+    $output_image_x = 80;
+    $output_image_y = 80*$image_y/$image_x;
 } else {
     $output_image_x = $image_x;
     $output_image_x = $image_y;

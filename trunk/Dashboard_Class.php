@@ -1,6 +1,6 @@
 <?php
 require_once 'mobileicon.php';
-include_once('Net/UserAgent/Mobile.php'); 
+require_once('Net/UserAgent/Mobile.php'); 
 
 function to_mobile_url($u) {
     # shortcut key.
@@ -76,6 +76,7 @@ class Dashboard {
 		}
 		$this->posts = $posts;
 	}
+    
 	function html_header() {
 		global $sessionkey;
 		$me = $this->me;
@@ -96,7 +97,7 @@ class Dashboard {
             print 'div.odd {';
             print 'background-color: rgb(245, 245, 245);';
             print '}';
-            print '</style>";';
+            print '</style>';
         }
         
         print '</head>';
@@ -161,8 +162,20 @@ class Dashboard {
         } else {
             print "<div class=\"autopagerize_page_element\">";
         }
-
-		foreach ( $this->posts as $k => $p ) {
+        
+        // paging a page
+        if ($agent->isDoCoMo()) {
+            $page = getPage();
+            if (($page % 2) == 1) {
+                $posts = array_slice($this->posts, 0, 5);
+            } else {
+                $posts = array_slice($this->posts, 5);
+            }
+        } else {
+            $posts = $this->posts;
+        } 
+        
+		foreach ( $posts as $k => $p ) {
 			$classname = ($k % 2) ? 'odd': 'even';
 			print "<a name=p$k id=p$k />";
 
@@ -223,7 +236,7 @@ class Dashboard {
 					$qvga = preg_replace('/_100.jpg/', '_250.jpg', $img);
 					
                     if ($agent->isDoCoMo()) {
-                    print "<a href=\"/mobile_image.php?img=$qvga\" ><img src=\"/mobile_image.php?tn=1&img=$img\" width=50/></a>";
+                        print "<a href=\"/mobile_image.php?img=$qvga\" ><img src=\"/mobile_image.php?tn=1&img=$img\" width=80/></a>";
                         $content .= $post_content;
                     } else {
                         print "<a href=$qvga style=\"float:left;\"><img src=\"$img\" width=100/></a>";
