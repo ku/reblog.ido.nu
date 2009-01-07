@@ -10,9 +10,7 @@ require_once 'HTTP/Request.php';
 require_once 'lib/adodb/adodb.inc.php';
 require_once 'lib/adodb/adodb-pear.inc.php';
 require_once 'lib/db.php';
-
 require_once 'Cookie.php';
-
 
 if ( $email != '' and $password != '' ) {
 	$hash = null;
@@ -33,7 +31,7 @@ if ( $email != '' and $password != '' ) {
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=SHIFT_JIS" />
 	<link rel="stylesheet" type="text/css" href="/style.css" media="all" />
-	<title></title>
+	<title>login</title>
 </head>
 <body>
 <?php
